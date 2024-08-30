@@ -1,5 +1,5 @@
 // 登录传递参数
-export interface loginForm {
+export interface LoginForm {
     username: string,
     password: string
 }

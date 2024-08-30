@@ -3,7 +3,9 @@
 </script>
 
 <template>
-<div>wec</div>
+  <div>
+    <layout></layout>
+  </div>
 </template>
 
 <style scoped>

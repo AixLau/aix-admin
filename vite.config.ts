@@ -20,18 +20,27 @@ export default defineConfig({
             symbolId: 'icon-[dir]-[name]',
         }),
         AutoImport({
-            imports: ["vue", "vue-router",  "pinia"],
-            dirs: ['src/utils', 'src/api'],
+            imports: [
+                "vue", "vue-router", "pinia",
+                {
+                    'element-plus': [
+                        'ElMessage',
+                        'ElMessageBox',
+                    ]
+                }
+            ],
             dts: 'src/auto-imports.d.ts', // 自动生成的类型声明文件路径
-            vueTemplate: true,
+            dirs: ['src/stores/**', 'src/utils/**', 'src/api/**'], // 自动导入目录
+            vueTemplate: true, // 允许在模板中使用自动导入
             resolvers: [ElementPlusResolver()],
         }),
         Components({
-            deep: true, // 搜索子目录
-            dirs: ['src/components'], // 按需加载的文件夹
             dts: 'src/components.d.ts', // 自动生成的类型声明文件路径
+            dirs: ['src/components', 'src/views'], // 添加你的组件和视图目录
             extensions: ['vue'],
-            resolvers: [ElementPlusResolver()],
+            deep: true,
+            resolvers: [ElementPlusResolver(),],
+
         }),
     ],
     resolve: {
